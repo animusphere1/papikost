@@ -126,7 +126,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
           decorator: DotsDecorator(
             spacing: EdgeInsets.all(3.0),
             color: Colors.grey,
-            activeColor: Hexcolor('#ff9a0a'),
+            activeColor: Hexcolor('#ff9a0d'),
             activeShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0)),
           ),
