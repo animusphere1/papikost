@@ -71,9 +71,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
         padding: EdgeInsets.only(
             top: mediaQuery.size.height / 2.0 - 32.0, right: 32.0),
         child: GestureDetector(
-          onTap: () {
-            // changehalaman();
-          },
+          onTap: () {},
           child: Container(
             height: 100,
             width: 100,
@@ -99,6 +97,8 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
       ),
     );
   }
+
+  //bubbletop
 
   //pageview
   Widget pageviewOnBoard() {

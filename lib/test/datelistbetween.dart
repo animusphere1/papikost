@@ -72,3 +72,27 @@
 //   print(hasil2);
 //   print(hasil);
 // }
+
+// intl ampm
+
+// void intlampm() {
+//   final startTime = DateTime(
+//       DateTime.now().year, DateTime.now().month, DateTime.now().day, 8);
+//   final endTime = DateTime(
+//       DateTime.now().year, DateTime.now().month, DateTime.now().day, 17, 30);
+
+//   final currentTime = DateTime.now();
+//   print(DateTime.now());
+
+//   if (currentTime.isAfter(startTime) && currentTime.isBefore(endTime)) {
+//     // do something
+//     var waktusekarang = DateTime.now();
+//     var convert = DateFormat.jm().format(waktusekarang);
+//     var jambukaconvertampm = DateFormat.jm().format(startTime);
+//     var jamtutup = DateFormat.jm().format(endTime);
+//     print(startTime);
+//     print("tutup jam ${jamtutup}");
+//     print(jambukaconvertampm);
+//     print(convert);
+//   }
+// }

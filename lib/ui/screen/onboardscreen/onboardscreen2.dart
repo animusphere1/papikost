@@ -11,7 +11,7 @@ class _OnBoardScreen2State extends State<OnBoardScreen2> {
     return Stack(
       children: <Widget>[
         Container(
-          color: Colors.black26,
+          color: Colors.yellow,
         ),
       ],
     );
