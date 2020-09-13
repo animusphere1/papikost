@@ -98,8 +98,6 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
     );
   }
 
-  //bubbletop
-
   //pageview
   Widget pageviewOnBoard() {
     return PageView.builder(

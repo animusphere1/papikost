@@ -10,3 +10,12 @@
 //   print("pindah hal 2");
 // }
 // changehalaman();
+
+// controller =
+//     AnimationController(vsync: this, duration: Duration(seconds: 2));
+
+// animation = Tween<double>(begin: 0, end: 100).animate(controller)
+//   ..addListener(() {
+//     setState(() {});
+//   });
+// controller.forward();

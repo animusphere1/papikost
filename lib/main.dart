@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:skripsi/ui/screen/onboardscreen/onboardscreen2.dart';
 import 'ui/screen/onboardscreen/onboardscreen.dart';
-import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());

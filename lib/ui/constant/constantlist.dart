@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:skripsi/ui/screen/onboardscreen/onboardscreen1.dart';
-import 'package:skripsi/ui/screen/onboardscreen/onboardscreen2.dart';
 
-List<Widget> onboardingscreenlist = [
+List<OnBoardScreen1> onboardingscreenlist = [
+  OnBoardScreen1(
+    panjang: cobadoang.length,
+  ),
   OnBoardScreen1(),
-  OnBoardScreen2(),
-  OnBoardScreen2(),
 ];
+
+List<int> cobadoang = [1, 2];
 
 Widget onboardingscreen(int i) {
   return onboardingscreenlist[i];
