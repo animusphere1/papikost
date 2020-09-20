@@ -19,3 +19,7 @@
 //     setState(() {});
 //   });
 // controller.forward();
+
+// Animation<double> animation;
+//   AnimationController controller;
+//   TickerProvider _ticker;

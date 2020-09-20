@@ -101,6 +101,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
   //pageview
   Widget pageviewOnBoard() {
     return PageView.builder(
+        physics: AlwaysScrollableScrollPhysics(),
         onPageChanged: (index) {
           swapHalaman(index);
         },
