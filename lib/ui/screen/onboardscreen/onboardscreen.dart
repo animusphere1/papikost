@@ -6,39 +6,23 @@ import 'package:skripsi/ui/constant/constantlist.dart';
 import 'package:skripsi/ui/constant/constantmediaquery.dart';
 
 class OnBoardScreen extends StatefulWidget {
+  static void apa() {}
   @override
   _OnBoardScreenState createState() => _OnBoardScreenState();
 }
 
 class _OnBoardScreenState extends State<OnBoardScreen> {
   PageController _pageviewController = PageController();
-  int indexOnPageChange = 0;
+  int _positionactivedots = 0;
 
   int panjanglist = onboardingscreenlist.length - 1;
   bool status = false;
 
   void swapHalaman(int index) {
     setState(() {
-      indexOnPageChange = index;
+      _positionactivedots = index;
     });
   }
-
-  // void halamanswapsendiri() {
-  //   Timer.periodic(Duration(seconds: 1), (timer) {
-  //     if (indexOnPageChange != panjanglist && status == false) {
-  //       _pageviewController.nextPage(
-  //           duration: Duration(seconds: 1), curve: Curves.linear);
-  //     }
-
-  //     if (indexOnPageChange == panjanglist) {
-  //       @override
-  //       void dispose() {
-  //         super.dispose();
-  //         _pageviewController.dispose();
-  //       }
-  //     }
-  //   });
-  // }
 
   @override
   void initState() {
@@ -47,7 +31,6 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
       initialPage: 0,
       viewportFraction: 1,
     );
-    // halamanswapsendiri();
   }
 
   @override
@@ -84,7 +67,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             ),
             child: Center(
               child: Text(
-                "Next",
+                'Next',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -121,7 +104,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             top: mediaQuery.size.height / 2.0 - 32.0, left: 32.0),
         child: DotsIndicator(
           dotsCount: onboardingscreenlist.length,
-          position: indexOnPageChange.toDouble(),
+          position: _positionactivedots.toDouble(),
           decorator: DotsDecorator(
             spacing: EdgeInsets.all(3.0),
             color: Colors.grey,

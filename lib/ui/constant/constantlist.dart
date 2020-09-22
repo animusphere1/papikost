@@ -1,13 +1,10 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:skripsi/ui/screen/onboardscreen/onboardscreen1.dart';
+import 'package:skripsi/ui/screen/onboardscreen/onboardscreenPage.dart';
 
-List<OnBoardScreen1> onboardingscreenlist = [
-  OnBoardScreen1(
-    panjang: cobadoang.length,
-  ),
-  OnBoardScreen1(),
+List<OnBoardScreenPage> onboardingscreenlist = [
+  OnBoardScreenPage(),
+  OnBoardScreenPage(),
 ];
 
 List<int> cobadoang = [1, 2, 55, 40, 20, 30, 40];
