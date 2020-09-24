@@ -1,10 +1,21 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:skripsi/ui/constant/constantcolor.dart';
+import 'package:skripsi/ui/screen/onboardscreen/coba.dart';
+import 'package:skripsi/ui/screen/onboardscreen/coba.dart';
 import 'package:skripsi/ui/screen/onboardscreen/onboardscreenPage.dart';
 
-List<OnBoardScreenPage> onboardingscreenlist = [
-  OnBoardScreenPage(),
-  OnBoardScreenPage(),
+final List<Widget> onboardingscreenlist = [
+  Coba(),
+  OnBoardScreenPage(
+    bgcolor: onboardBackgroundColor,
+  ),
+  OnBoardScreenPage(
+    bgcolor: onboardBackgroundColor,
+  ),
+  OnBoardScreenPage(
+    bgcolor: onboardBackgroundColor,
+  ),
 ];
 
 List<int> cobadoang = [1, 2, 55, 40, 20, 30, 40];

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:skripsi/ui/constant/constantcolor.dart';
+import 'widget/widgetsonboard.dart';
 
 class OnBoardScreenPage extends StatefulWidget {
+  final bgcolor;
+
+  const OnBoardScreenPage({this.bgcolor});
+
   @override
   _OnBoardScreenPageState createState() => _OnBoardScreenPageState();
 }
@@ -9,9 +13,10 @@ class OnBoardScreenPage extends StatefulWidget {
 class _OnBoardScreenPageState extends State<OnBoardScreenPage> {
   @override
   Widget build(BuildContext context) {
-    return container();
-  }
-
- 
+    return Stack(
+      children: <Widget>[
+        OnBoardBackground(widget: widget),
+      ],
+    );
   }
 }

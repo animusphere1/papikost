@@ -1,28 +1,22 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
+import 'package:skripsi/core/viewmodel/onboard_provider.dart';
 import 'package:skripsi/ui/constant/constantcolor.dart';
 import 'package:skripsi/ui/constant/constantlist.dart';
 import 'package:skripsi/ui/constant/constantmediaquery.dart';
 
 class OnBoardScreen extends StatefulWidget {
-  static void apa() {}
   @override
   _OnBoardScreenState createState() => _OnBoardScreenState();
 }
 
 class _OnBoardScreenState extends State<OnBoardScreen> {
   PageController _pageviewController = PageController();
-  int _positionactivedots = 0;
 
-  int panjanglist = onboardingscreenlist.length - 1;
   bool status = false;
-
-  void swapHalaman(int index) {
-    setState(() {
-      _positionactivedots = index;
-    });
-  }
+  GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey(debugLabel: "Coba Doang");
 
   @override
   void initState() {
@@ -31,18 +25,18 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
       initialPage: 0,
       viewportFraction: 1,
     );
+    print(onboardingscreenlist.length);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          pageviewOnBoard(),
-          floatingButtonOnBoard(mediaQuery(context)),
-          dotsindicator(mediaQuery(context)),
-        ],
-      ),
+      key: _scaffoldkey,
+      body: Stack(children: <Widget>[
+        pageviewOnBoard(),
+        floatingButtonOnBoard(mediaQuery(context)),
+        dotsindicator(mediaQuery(context)),
+      ]),
     );
   }
 
@@ -69,7 +63,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
               child: Text(
                 'Next',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: status != true ? Colors.white : Colors.black12,
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
                 ),
@@ -83,37 +77,51 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
 
   //pageview
   Widget pageviewOnBoard() {
-    return PageView.builder(
-        physics: AlwaysScrollableScrollPhysics(),
-        onPageChanged: (index) {
-          swapHalaman(index);
-        },
-        controller: _pageviewController,
-        itemCount: onboardingscreenlist.length,
-        itemBuilder: (context, i) {
-          return onboardingscreen(i);
-        });
+    return Builder(builder: (context) {
+      return Consumer<OnBoardProvider>(builder: (context, onboardprovider, _) {
+        return PageView.builder(
+            scrollDirection: Axis.horizontal,
+            physics: AlwaysScrollableScrollPhysics(),
+            onPageChanged: (index) {
+              onboardprovider.indexdotsganti(index);
+            },
+            controller: _pageviewController,
+            itemCount: onboardingscreenlist.length ?? 0,
+            itemBuilder: (context, i) {
+              return onboardingscreen(i);
+            });
+      });
+    });
   }
 
   //dotsindicator
   Widget dotsindicator(MediaQueryData mediaQuery) {
-    return Align(
-      alignment: Alignment.topLeft,
-      child: Padding(
-        padding: EdgeInsets.only(
-            top: mediaQuery.size.height / 2.0 - 32.0, left: 32.0),
-        child: DotsIndicator(
-          dotsCount: onboardingscreenlist.length,
-          position: _positionactivedots.toDouble(),
-          decorator: DotsDecorator(
-            spacing: EdgeInsets.all(3.0),
-            color: Colors.grey,
-            activeColor: Hexcolor('#ff9a0d'),
-            activeShape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0)),
-          ),
-        ),
-      ),
-    );
+    return Builder(builder: (context) {
+      return Consumer<OnBoardProvider>(
+        builder: (context, onboardprovider, _) {
+          return Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  top: mediaQuery.size.height / 2.0 - 32.0, left: 32.0),
+              child: DotsIndicator(
+                dotsCount: onboardingscreenlist.length != 0
+                    ? onboardingscreenlist.length
+                    : 3,
+                position: onboardprovider.indexdots.toDouble(),
+                decorator: DotsDecorator(
+                  spacing: EdgeInsets.all(4.0),
+                  color: Colors.grey,
+                  activeColor: Hexcolor('#ff9a0d'),
+                  activeSize: Size(18.0, 9.0),
+                  activeShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0)),
+                ),
+              ),
+            ),
+          );
+        },
+      );
+    });
   }
 }
