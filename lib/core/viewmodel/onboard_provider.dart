@@ -1,22 +1,22 @@
 import 'package:flutter/cupertino.dart';
+import 'package:skripsi/ui/constant/constantlist.dart';
 
 class OnBoardProvider extends ChangeNotifier {
   int _indexdots = 0;
   int get indexdots => _indexdots;
 
-  Axis _axisDirection = Axis.horizontal;
-  Axis get axisdirectiononboard => _axisDirection;
-
   void indexdotsganti(int index) {
     _indexdots = index;
     print(indexdots);
+    notifyListeners();
+  }
 
-    if (_indexdots <= 1) {
-      _axisDirection = Axis.vertical;
-    } else {
-      _axisDirection = Axis.horizontal;
+  void indexdotsgantiklik(PageController controller) {
+    if (_indexdots != onboardingscreenlist.length - 1) {
+      _indexdots++;
+      controller.animateToPage(_indexdots,
+          duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
     }
-
     notifyListeners();
   }
 }

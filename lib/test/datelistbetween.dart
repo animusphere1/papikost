@@ -23,42 +23,82 @@
 //   ScheduleModel({this.name, this.dates});
 // }
 
+// import 'package:flutter/material.dart';
+
 // void main() {
-//   List<EventShow> events = <EventShow>[
-//     EventShow(
-//         name: 'event 1', date: new DateTime.now().add(new Duration(days: 1))),
-//     EventShow(
-//         name: 'event 2', date: new DateTime.now().add(new Duration(days: 4))),
-//     EventShow(
-//         name: 'event 3', date: new DateTime.now().add(new Duration(days: 4))),
-//     EventShow(
-//         name: 'event 4', date: new DateTime.now().add(new Duration(days: 7))),
-//     EventShow(
-//         name: 'event 5', date: new DateTime.now().add(new Duration(days: 10)))
-//   ];
+//   runApp(MyApp());
+// }
 
-//   List<EventShow> eventsjadi = [];
+// class MyApp extends StatefulWidget {
+//   @override
+//   _MyAppState createState() => _MyAppState();
+// }
 
-//   DateTime startRange = new DateTime.now().add(new Duration(days: 4));
-//   DateTime endRange = new DateTime.now().add(new Duration(days: 8));
+// class _MyAppState extends State<MyApp> {
+//   @override
+//   void initState() {
+//     super.initState();
+//     coba();
+//   }
 
-//   //filter list
-//   var filteredEvents = events
-//       .where((event) =>
-//           event.date.difference(startRange).inDays >= 0 &&
-//           event.date.difference(endRange).inDays <= 0)
-//       .toList();
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container();
+//   }
 
-//   filteredEvents.forEach((event) {
-//     eventsjadi.add(event);
-//   });
+//   coba() {
+//     List<EventShow> events = <EventShow>[
+//       EventShow(
+//           name: 'event 1', date: new DateTime.now().add(new Duration(days: 1))),
+//       EventShow(
+//           name: 'event 1', date: new DateTime.now().add(new Duration(days: 4))),
+//       EventShow(
+//           name: 'event 1', date: new DateTime.now().add(new Duration(days: 4))),
+//       EventShow(
+//           name: 'event 4', date: new DateTime.now().add(new Duration(days: 7))),
+//       EventShow(
+//           name: 'event 5', date: new DateTime.now().add(new Duration(days: 10)))
+//     ];
 
-//   print(eventsjadi[0].name);
+//     List<EventShow> eventsjadi = [];
+
+//     DateTime startRange = new DateTime.now().add(new Duration(days: 4));
+//     DateTime endRange = new DateTime.now().add(new Duration(days: 8));
+
+//     print(events[0].name);
+
+//     //filter list
+//     var filteredEvents = events
+//         .where((event) =>
+//             event.date.difference(startRange).inDays >= 0 &&
+//             event.date.difference(endRange).inDays <= 0)
+//         .toList();
+
+//     List<EventShow> hasil =
+//         events.where((element) => element.name == "event 1");
+
+//     hasil.sort((a, b) => a.date.compareTo(b.date));
+
+//     // setState(() {
+//     //   hasil.name = 'event 2';
+//     //   hasil.date = DateTime.now();
+//     // });
+
+//     // print(events[1].date.difference(startRange).inDays);
+
+//     filteredEvents.forEach((event) {
+//       eventsjadi.add(event);
+//       print(event.name);
+//     });
+
+//     print(events[0].date);
+//     print(hasil);
+//   }
 // }
 
 // class EventShow {
-//   final String name;
-//   final DateTime date;
+//   String name;
+//   DateTime date;
 
 //   EventShow({this.name, this.date});
 // }

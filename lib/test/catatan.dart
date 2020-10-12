@@ -23,3 +23,21 @@
 // Animation<double> animation;
 //   AnimationController controller;
 //   TickerProvider _ticker;
+
+List<int> cobadoang = [1, 2, 55, 40, 20, 30, 40];
+List<int> coba2;
+
+// ambilangka() {
+//   cobadoang.sort((a, b) => a.compareTo(b));
+
+//   try {
+//     cobadoang.shuffle();
+//     if (coba2 == null) {
+//       coba2 = cobadoang;
+//     }
+//     print(coba2);
+//     print("Berhasil Ditambah");
+//   } catch (e) {
+//     Exception(e);
+//   }
+// }

@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:skripsi/core/viewmodel/onboard_provider.dart';
@@ -14,9 +15,7 @@ class OnBoardScreen extends StatefulWidget {
 
 class _OnBoardScreenState extends State<OnBoardScreen> {
   PageController _pageviewController = PageController();
-
-  bool status = false;
-  GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey(debugLabel: "Coba Doang");
+  GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey();
 
   @override
   void initState() {
@@ -36,6 +35,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
         pageviewOnBoard(),
         floatingButtonOnBoard(mediaQuery(context)),
         dotsindicator(mediaQuery(context)),
+        _logoText(mediaQuery(context)),
       ]),
     );
   }
@@ -48,7 +48,10 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
         padding: EdgeInsets.only(
             top: mediaQuery.size.height / 2.0 - 32.0, right: 32.0),
         child: GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Provider.of<OnBoardProvider>(context, listen: false)
+                .indexdotsgantiklik(_pageviewController);
+          },
           child: Container(
             height: 100,
             width: 100,
@@ -63,7 +66,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
               child: Text(
                 'Next',
                 style: TextStyle(
-                  color: status != true ? Colors.white : Colors.black12,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
                 ),
@@ -88,7 +91,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             controller: _pageviewController,
             itemCount: onboardingscreenlist.length ?? 0,
             itemBuilder: (context, i) {
-              return onboardingscreen(i);
+              return onboardingscreenlist[i];
             });
       });
     });
@@ -105,9 +108,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
               padding: EdgeInsets.only(
                   top: mediaQuery.size.height / 2.0 - 32.0, left: 32.0),
               child: DotsIndicator(
-                dotsCount: onboardingscreenlist.length != 0
-                    ? onboardingscreenlist.length
-                    : 3,
+                dotsCount: onboardingscreenlist.length,
                 position: onboardprovider.indexdots.toDouble(),
                 decorator: DotsDecorator(
                   spacing: EdgeInsets.all(4.0),
@@ -123,5 +124,36 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
         },
       );
     });
+  }
+
+  List<Map<String, List<Map<String, dynamic>>>> nama = [
+    {
+      'nama': [
+        {'sekolah': '1'},
+        {'sekolah': '2'}
+      ]
+    },
+    {
+      'nama': [
+        {'sekolah': '2'}
+      ]
+    }
+  ];
+
+  Widget _logoText(MediaQueryData mediaQuery) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Padding(
+        padding: EdgeInsets.only(
+            top: mediaQuery.size.height / 8.0 - 32.0, left: 32.0),
+        child: Text(
+          nama[0]['nama'][0]['sekolah'],
+          style: GoogleFonts.lato(
+            fontSize: 30,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
   }
 }
