@@ -1,5 +1,5 @@
 import 'package:hexcolor/hexcolor.dart';
 
-Hexcolor onboardBackgroundColor = Hexcolor("#27272e");
+HexColor onboardBackgroundColor = HexColor("#27272e");
 
-Hexcolor colorButtonOnBoardScreen = Hexcolor("#ff9a0d");
+HexColor colorButtonOnBoardScreen = HexColor("#ff9a0d");

@@ -5,9 +5,9 @@ class OnBoardProvider extends ChangeNotifier {
   int _indexdots = 0;
   int get indexdots => _indexdots;
 
-  void indexdotsganti(int index) {
+  void changeDots(int index) {
     _indexdots = index;
-    print(indexdots);
+    // print(indexdots);
     notifyListeners();
   }
 
@@ -17,6 +17,7 @@ class OnBoardProvider extends ChangeNotifier {
       controller.animateToPage(_indexdots,
           duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
     }
+    print(_indexdots);
     notifyListeners();
   }
 }

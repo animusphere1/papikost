@@ -24,8 +24,8 @@
 //   AnimationController controller;
 //   TickerProvider _ticker;
 
-List<int> cobadoang = [1, 2, 55, 40, 20, 30, 40];
-List<int> coba2;
+// List<int> cobadoang = [1, 2, 55, 40, 20, 30, 40];
+// List<int> coba2;
 
 // ambilangka() {
 //   cobadoang.sort((a, b) => a.compareTo(b));
@@ -40,4 +40,38 @@ List<int> coba2;
 //   } catch (e) {
 //     Exception(e);
 //   }
+// }
+
+//  _controller.addListener(() {
+//       print(_controller.offset);
+
+//       if (_controller.offset >= _controller.position.maxScrollExtent &&
+//           !_controller.position.outOfRange) {
+
+//           }
+
+//       // if (_controller.offset <= _controller.position.minScrollExtent &&
+//       //     !_controller.position.outOfRange) {
+//       //   print("Maks Bang");
+//       // }
+//     });
+
+//  _controller.animateTo(_controller.position.minScrollExtent,
+//             curve: Curves.linear, duration: Duration(milliseconds: 500));
+
+//             Widget _containerBottom(MediaQueryData mediaQuery) {
+// return Align(
+//   alignment: Alignment.bottomCenter,
+//   child: Container(
+//     height: 150,
+//     child: ListView.builder(
+//       controller: _controller,
+//       itemCount: 100,
+//       scrollDirection: Axis.horizontal,
+//       itemBuilder: (context, index) {
+//         return Text(index.toString());
+//       },
+//     ),
+//   ),
+// );
 // }

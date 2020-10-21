@@ -1,6 +1,5 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:skripsi/core/viewmodel/onboard_provider.dart';
@@ -15,27 +14,26 @@ class OnBoardScreen extends StatefulWidget {
 
 class _OnBoardScreenState extends State<OnBoardScreen> {
   PageController _pageviewController = PageController();
-  GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
+    //pageviewcontroller
     _pageviewController = PageController(
       initialPage: 0,
       viewportFraction: 1,
     );
-    print(onboardingscreenlist.length);
+    _pageviewController.addListener(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldkey,
       body: Stack(children: <Widget>[
         pageviewOnBoard(),
         floatingButtonOnBoard(mediaQuery(context)),
         dotsindicator(mediaQuery(context)),
-        _logoText(mediaQuery(context)),
+        _logo(mediaQuery(context)),
       ]),
     );
   }
@@ -46,7 +44,8 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
       alignment: Alignment.topRight,
       child: Padding(
         padding: EdgeInsets.only(
-            top: mediaQuery.size.height / 2.0 - 32.0, right: 32.0),
+            top: mediaQuery.size.height / 2.0 - leftPaddingOnBoard,
+            right: leftPaddingOnBoard),
         child: GestureDetector(
           onTap: () {
             Provider.of<OnBoardProvider>(context, listen: false)
@@ -86,7 +85,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             scrollDirection: Axis.horizontal,
             physics: AlwaysScrollableScrollPhysics(),
             onPageChanged: (index) {
-              onboardprovider.indexdotsganti(index);
+              onboardprovider.changeDots(index);
             },
             controller: _pageviewController,
             itemCount: onboardingscreenlist.length ?? 0,
@@ -106,14 +105,15 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             alignment: Alignment.topLeft,
             child: Padding(
               padding: EdgeInsets.only(
-                  top: mediaQuery.size.height / 2.0 - 32.0, left: 32.0),
+                  top: mediaQuery.size.height / 2.0 - leftPaddingOnBoard,
+                  left: leftPaddingOnBoard),
               child: DotsIndicator(
                 dotsCount: onboardingscreenlist.length,
                 position: onboardprovider.indexdots.toDouble(),
                 decorator: DotsDecorator(
                   spacing: EdgeInsets.all(4.0),
                   color: Colors.grey,
-                  activeColor: Hexcolor('#ff9a0d'),
+                  activeColor: HexColor('#ff9a0d'),
                   activeSize: Size(18.0, 9.0),
                   activeShape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0)),
@@ -126,32 +126,17 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
     });
   }
 
-  List<Map<String, List<Map<String, dynamic>>>> nama = [
-    {
-      'nama': [
-        {'sekolah': '1'},
-        {'sekolah': '2'}
-      ]
-    },
-    {
-      'nama': [
-        {'sekolah': '2'}
-      ]
-    }
-  ];
-
-  Widget _logoText(MediaQueryData mediaQuery) {
+  //theJourney Logo
+  Widget _logo(MediaQueryData mediaQuery) {
     return Align(
       alignment: Alignment.topLeft,
       child: Padding(
         padding: EdgeInsets.only(
-            top: mediaQuery.size.height / 8.0 - 32.0, left: 32.0),
-        child: Text(
-          nama[0]['nama'][0]['sekolah'],
-          style: GoogleFonts.lato(
-            fontSize: 30,
-            color: Colors.white,
-          ),
+            top: mediaQuery.size.height / 8.0 - leftPaddingOnBoard,
+            left: leftPaddingOnBoard),
+        child: Image.asset(
+          'assets/TheJourneyWhite.png',
+          width: mediaQuery.size.width * 0.3,
         ),
       ),
     );

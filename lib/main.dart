@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:skripsi/ui/screen/onboardscreen/onboardscreenPage.dart';
 import 'core/viewmodel/onboard_provider.dart';
 import 'ui/screen/onboardscreen/onboardscreen.dart';
 import 'package:provider/provider.dart';
@@ -14,12 +15,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  var hasil;
+
+  @override
+  initState() {
+    super.initState();
+    getPref();
+  }
+
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-    ));
-
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+    );
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -31,8 +39,15 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           accentColor: Colors.transparent,
         ),
         debugShowCheckedModeBanner: false,
-        home: OnBoardScreen(),
+        home: hasil == null ? OnBoardScreenPage() : OnBoardScreen(),
       ),
     );
+  }
+
+  getPref() {
+    print(hasil);
+    setState(() {
+      hasil = 1;
+    });
   }
 }
